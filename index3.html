@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>User page</title>
+    <link rel="stylesheet" href="style3.css">
+  </head>
+  <body>
+
+     <header class="header">
+  <h1 class="header__title">Twitter</h1>
+  <nav class="header__nav">
+    <a href="#" class="header__nav-link">TWEETS</a>
+    <a href="index.html" class="header__nav-link">EXIT</a>
+    
+  </nav>
+</header>   
+
+ <main>
+   <div class="container">
+      <header>Welcome, <strong id="name"></strong>!</header>
+      <p>Email:  <span id="email"></span> </p>
+      <p>Name:  <span id="fname"> </span></p>
+      <p>Country:<b> <span id="country"> </span></p>
+      <p>Birth of date: <span id="date"></span></p>
+      </div>
+    </main>
+
+    <script>
+      const jsonData = localStorage.getItem("data");
+      const data = JSON.parse(jsonData);
+
+      // выводим значения в поля на странице
+      document.getElementById("name").textContent = data.name;
+      document.getElementById("email").textContent = data.email;
+      document.getElementById("fname").textContent = data.name;
+      document.getElementById("country").textContent = data.country;
+      document.getElementById("date").textContent = data.date;
+    </script>
+
+  </body>
+</html>

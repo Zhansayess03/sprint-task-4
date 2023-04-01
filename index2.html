@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>Sign up page</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h3>Twitter </h3>
+  <div class="container">
+    <div class="registration form">
+      <header>Sign up</header>
+      <form id="registration-form">
+        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+        <input type="password" id="password" name="password" placeholder="Create a password" required>
+        <input type="text" id="name" name="name" placeholder="Enter your name" required>
+         <input type="text" id="country" name="country" placeholder="Enter your country" required>
+         <input type="date" id="date" name="date" placeholder="Enter your date of birth" required>
+        <input type="submit" class="submit" value="Sign up">
+      </form>
+      <div class="signup">
+        <span class="signup">Already have an account?
+         <a href="index.html">Login</a>
+        </span>
+      </div>
+    </div>
+  </div>
+   <script>const registrationForm = document.getElementById("registration-form");
+
+registrationForm.addEventListener("submit", function(event) {
+  event.preventDefault(); // отменяем стандартное поведение формы
+
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+  const name = document.getElementById("name").value;
+  const country = document.getElementById("country").value;
+  const date = document.getElementById("date").value;
+
+ 
+  const data = {
+    email: email,
+    password: password,
+    name: name,
+    country: country,
+    date: date
+  };
+
+  
+ let users = localStorage.getItem("users");
+  if (!users) {
+    users = []; // если массив еще не существует, создаем его
+  } else {
+    users = JSON.parse(users); // преобразуем строку в массив объектов
+  }
+
+  // добавляем новый объект в массив
+  users.push(data);
+
+  // сохраняем обновленный массив в localStorage
+  localStorage.setItem("users", JSON.stringify(users));
+
+  // перенаправляем пользователя на следующую страницу
+  window.location.href = "index.html";
+});
+
+</script>
+
+</body>
+
+</html>
+

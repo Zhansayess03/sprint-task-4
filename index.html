@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Login page</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h3>Twitter </h3>
+  <div class="container">
+    <div class="login form">
+      <header>Login</header>
+      <form id="login-form" >
+        <input type="email" id="email" placeholder="Enter your email">
+        <input type="password" id="password" placeholder="Enter your password">
+        <input type="submit" class="submit" value="Login">
+      </form>
+      <div class="signup">
+        <span class="signup">Don't have an account?
+         <a href="index2.html">Signup</a>
+        </span>
+      </div>
+    </div>
+  </div>
+  <script>
+const loginForm = document.getElementById("login-form");
+
+loginForm.addEventListener("submit", function(event) {
+  event.preventDefault();
+
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+
+  let users = localStorage.getItem("users");
+  if (users) {
+    users = JSON.parse(users);
+    const userData = users.find(user => user.email === email && user.password === password);
+    if (userData) {
+      localStorage.setItem("data", JSON.stringify(userData));
+      window.location.href = "index3.html";
+    } else {
+      alert("Wrong email or password");
+    }
+  } else {
+    alert("Wrong email or password");
+  }
+});
+
+    </script>
+</body>
+
+</html>
+
